@@ -1,0 +1,604 @@
+define({ "api": [
+  {
+    "group": "Meetings",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/api/v1/meetings/admin/:adminId/view/all",
+    "title": "api for getting all meetings of a admin.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Authorization Token of user. (query params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "adminId",
+            "description": "<p>Id of admin. (url params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "     {\n    \"error\": false,\n    \"message\": \"All Meeting Details Found\",\n    \"status\": 200,\n    \"data\": [\n        {\n            \"meetingId\": \"H1EMNHJ7Q\",\n            \"meetingCreatorId\": \"BkvIGrvfQ\",\n            \"meetingCreatorName\": \"Anchal Nigam\",\n            \"title\": \"Project discussion\",\n            \"start\": \"2018-07-08T08:09:38.797Z\",\n            \"end\": \"2018-07-08T08:57:52.780Z\",\n            \"venueName\": \"Near Station\",\n            \"meetingPurpose\": \"For discussing\",\n            \"meetingPartner\": \"Sunita Nigam\",\n            \"meetingPartnerId\": \"BJWMMHPGm\",\n            \"statusNormal\": \"dismiss\",\n            \"statusAdmin\": \"dismiss\",\n            \"mailSentNormal\": 1,\n            \"mailSentAdmin\": 1,\n            \"createdOn\": \"2018-07-08T07:56:30.555Z\",\n            \"modifiedOn\": \"2018-07-08T08:06:33.788Z\"\n        },\n        \n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n    {\n    \"error\": true,\n    \"message\": \"Invalid Or Expired AuthorizationKey\",\n    \"status\": 404,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"No Meeting Found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/meeting.js",
+    "groupTitle": "Meetings",
+    "name": "GetApiV1MeetingsAdminAdminidViewAll"
+  },
+  {
+    "group": "Meetings",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/api/v1/meetings/:meetingId/view/single",
+    "title": "api for getting single meeting information.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Authorization Token of user. (query params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "meetingId",
+            "description": "<p>Id of meeting. (url params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "     {\n    \"error\": false,\n    \"message\": \"All Meeting Details Found\",\n    \"status\": 200,\n    \"data\": {\n        \"meetingId\": \"H1EMNHJ7Q\",\n        \"meetingCreatorId\": \"BkvIGrvfQ\",\n        \"meetingCreatorName\": \"Anchal Nigam\",\n        \"title\": \"Project discussion\",\n        \"start\": \"2018-07-08T08:09:38.797Z\",\n        \"end\": \"2018-07-08T08:57:52.780Z\",\n        \"venueName\": \"Near Station\",\n        \"meetingPurpose\": \"For discussing\",\n        \"meetingPartner\": \"Sunita Nigam\",\n        \"meetingPartnerId\": \"BJWMMHPGm\",\n        \"statusNormal\": \"dismiss\",\n        \"statusAdmin\": \"dismiss\",\n        \"mailSentNormal\": 1,\n        \"mailSentAdmin\": 1,\n        \"createdOn\": \"2018-07-08T07:56:30.555Z\",\n        \"modifiedOn\": \"2018-07-08T08:06:33.788Z\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n    {\n    \"error\": true,\n    \"message\": \"Invalid Or Expired AuthorizationKey\",\n    \"status\": 404,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"No Meeting Found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/meeting.js",
+    "groupTitle": "Meetings",
+    "name": "GetApiV1MeetingsMeetingidViewSingle"
+  },
+  {
+    "group": "Meetings",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/api/v1/meetings/:userId/view/all",
+    "title": "api for getting all meetings of a user.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Authorization Token of user. (query params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>Id of user. (url params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "     {\n    \"error\": false,\n    \"message\": \"All Meeting Details Found\",\n    \"status\": 200,\n    \"data\": [\n        {\n            \"meetingId\": \"H1EMNHJ7Q\",\n            \"meetingCreatorId\": \"BkvIGrvfQ\",\n            \"meetingCreatorName\": \"Anchal Nigam\",\n            \"title\": \"Project discussion\",\n            \"start\": \"2018-07-08T08:09:38.797Z\",\n            \"end\": \"2018-07-08T08:57:52.780Z\",\n            \"venueName\": \"Near Station\",\n            \"meetingPurpose\": \"For discussing\",\n            \"meetingPartner\": \"Sunita Nigam\",\n            \"meetingPartnerId\": \"BJWMMHPGm\",\n            \"statusNormal\": \"dismiss\",\n            \"statusAdmin\": \"dismiss\",\n            \"mailSentNormal\": 1,\n            \"mailSentAdmin\": 1,\n            \"createdOn\": \"2018-07-08T07:56:30.555Z\",\n            \"modifiedOn\": \"2018-07-08T08:06:33.788Z\"\n        },\n        \n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n    {\n    \"error\": true,\n    \"message\": \"Invalid Or Expired AuthorizationKey\",\n    \"status\": 404,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"No Meeting Found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/meeting.js",
+    "groupTitle": "Meetings",
+    "name": "GetApiV1MeetingsUseridViewAll"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/api/v1/users/view/all",
+    "title": "api for getting all users.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Authorization Token of user. (query params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\": false,\n    \"message\": \"All User Details Found\",\n    \"status\": 200,\n    \"data\": [\n       \n            {\n            \"userId\": \"BJWMMHPGm\",\n            \"userType\": 1,\n            \"firstName\": \"Sunita\",\n            \"lastName\": \"Nigam\",\n            \"userName\": \"Sunita12\",\n            \"email\": \"ibm2013044@iiita.ac.in\",\n            \"mobileNumber\": \" 91-9026224948\",\n            \"country\": \"IN\"\n        },\n        \n       \n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n    {\n    \"error\": true,\n    \"message\": \"Invalid Or Expired AuthorizationKey\",\n    \"status\": 404,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"No User Found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "GetApiV1UsersViewAll"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/forgotPassword",
+    "title": "api for sending mail for password change.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "          {\n    \"error\": false,\n    \"message\": \"Mail Sent Successful!\",\n    \"status\": 200,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Server Error!Sent Mail Failed.\",\n    \"status\": 500,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "PostApiV1UsersForgotpassword"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/login",
+    "title": "api for user login.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userType",
+            "description": "<p>Type of user(normal or admin). (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "         {\n    \"error\": false,\n    \"message\": \"Login Successful\",\n    \"status\": 200,\n    \"data\": {\n        \"authToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd2lkIjoiSHlyVk9vVEpRIiwiaWF0IjoxNTI3Nzg1NTE2NzY2LCJleHAiOjE1Mjc4NzE5MTYsInN1YiI6ImF1dGhUb2tlbiIsImlzcyI6ImVkd2lzb3JQcm9qZWN0IiwiZGF0YSI6eyJ1c2VySWQiOiJyMWZOdTg2eW0iLCJmaXJzdE5hbWUiOiJBbmNoYWwiLCJsYXN0TmFtZSI6Ik5pZ2FtIiwiZW1haWwiOiJhbmNoYWxuaWdhbW1AZ21haWwuY29tIiwibW9iaWxlTnVtYmVyIjoiIDkxLTkwMjYyMjQ5NDgiLCJjb3VudHJ5IjoiSU4ifX0.ieG6fhHifSS4f2j5Li46lzjNlAsyFpoZow2GYeYyVKc\",\n        \"userDetails\": {\n            \"userId\": \"r1fNu86ym\",\n            \"userType\":2,\n            \"firstName\": \"Anchal\",\n            \"lastName\": \"Nigam\",\n            \"userName\":\"anchal-admin\",\n            \"email\": \"anchalnigamm@gmail.com\",\n            \"mobileNumber\": \" 91-9026224948\",\n            \"country\": \"IN\"\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"User has not Verified!\",\n    \"status\": 400,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"Wrong Password!Login Failed\",\n    \"status\": 400,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "PostApiV1UsersLogin"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/logout",
+    "title": "api to logout user.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>Auth Token of the user. (auth headers) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"error\": false,\n    \"message\": \"Logged Out Successfully\",\n    \"status\": 200,\n    \"data\": null\n\n}",
+          "type": "object"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Already Logged Out or Invalid UserId\",\n    \"status\": 404,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"Error Occured!\",\n    \"status\": 500,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "PostApiV1UsersLogout"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "post",
+    "url": "/api/v1/users/signup",
+    "title": "api for Signup.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userType",
+            "description": "<p>Type of user(normal or admin). (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "firstName",
+            "description": "<p>First Name of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "lastName",
+            "description": "<p>Last Name of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userName",
+            "description": "<p>UserName. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "mobileNumber",
+            "description": "<p>Mobile Number of the user. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "country",
+            "description": "<p>Country Code of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "        {\n    \"error\": false,\n    \"message\": \"User created and Mail sent Successful!\",\n    \"status\": 200,\n    \"data\": {\n        \"userId\": \"ByePDU6k7\",\n        \"userType\":2,\n        \"firstName\": \"Anchal\",\n        \"lastName\": \"Nigam\",\n        \"userName\":\"anchal-admin\",\n        \"email\": \"anchalnigamm@gmail.com\",\n        \"mobileNumber\": \"+91-9026224948\",\n        \"country\": \"India\",\n        \"hash\": \"o64ifdmrta9fba8q0ykhcp5sxwoogl3y5\",\n        \"active\": false,\n        \n        \"_id\": \"5b0fd758e762fc09d4c61e02\",\n        \"__v\": 0\n    }\n}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "PostApiV1UsersSignup"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "put",
+    "url": "/api/v1/users/resetPassword",
+    "title": "api for resetting password.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the user which is provided at email link by encrypting using btoa. (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password of the user. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "        {\n    \"error\": false,\n    \"message\": \"Password changed successfully!\",\n    \"status\": 200,\n    \"data\": {\n        \"userId\": \"r1fNu86ym\",\n        \"userType\":2,\n        \"firstName\": \"Anchal\",\n        \"lastName\": \"Nigam\",\n        \"userName\":\"anchal-admin\",\n        \"password\": \"$2a$10$Zs/9yOheKp..6LIZbEOi8ePxmVfdoxhGvPxFwcovFW5KhTJ2IT.Lq\",\n        \"email\": \"anchalnigamm@gmail.com\",\n        \"mobileNumber\": \" 91-9026224948\",\n        \"country\": \"IN\",\n        \"hash\": \"jrw74tgx28ex1wat5vq4wjr57ehe8w1qh\",\n        \"active\": true,\n        \"createdOn\": null,\n        \"_id\": \"5b0fd82ae762fc09d4c61e03\",\n        \"__v\": 0\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"One or more parameter is missing\",\n    \"status\": 403,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"Error Occured!\",\n    \"status\": 500,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "PutApiV1UsersResetpassword"
+  },
+  {
+    "group": "users",
+    "version": "1.0.0",
+    "type": "put",
+    "url": "/api/v1/users/verifyEmail",
+    "title": "api for verifying Email.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "hash",
+            "description": "<p>hash which is provided in email link. (body params) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "myResponse",
+            "description": "<p>shows error status, message, http status code, result.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "          {\n    \"error\": false,\n    \"message\": \"User Verified Successfully\",\n    \"status\": 200,\n    \"data\": {\n        \n        \"userId\": \"rkWlVp1RM\",\n        \"userType\":2,\n        \"firstName\": \"Anchal\",\n        \"lastName\": \"Nigam\",\n        \"userName\":\"anchal-admin\",\n        \"email\": \"anchalnigamm@gmail.com\",\n        \"mobileNumber\": 9026224948,\n        \"hash\": \"8ug67ar1zoyrndloe73ztai17xa4jafi\",\n        \"active\": true,      \n        \"createdOn\": \"2018-05-09T00:42:17.000Z\",\n        \"_id\": \"5af243e929485a1718f18c53\",\n        \"__v\": 0\n    \n        \n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n    \"error\": true,\n    \"message\": \"Hash is missing\",\n    \"status\": 403,\n    \"data\": null\n}\n{\n    \"error\": true,\n    \"message\": \"User Not found\",\n    \"status\": 404,\n    \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/user.js",
+    "groupTitle": "users",
+    "name": "PutApiV1UsersVerifyemail"
+  }
+] });
